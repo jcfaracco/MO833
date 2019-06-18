@@ -1,0 +1,26 @@
+---
+- name: "Removing Pre-Installed Docker"
+  apt:
+    name: nvidia-docker
+    state: absent
+
+- name: "Add NVidia Keys"
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+
+- name: "Enable NVidia Repository"
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    filename: 'nvidia-docker2'
+    update_cache: yes
+  with_items:
+    - "deb https://nvidia.github.io/libnvidia-container/ubuntu16.04/amd64 /"
+    - "deb https://nvidia.github.io/nvidia-container-runtime/ubuntu16.04/amd64 /"
+    - "deb https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64 /"
+
+- name: "Install Pre-Requisites"
+  apt:
+    name: nvidia-docker2
+    update_cache: yes
+    state: latest

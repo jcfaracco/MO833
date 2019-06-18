@@ -1,0 +1,23 @@
+BootStrap: docker
+From: ubuntu:16.04
+
+%environment
+    LANG="en_US.UTF-8"
+    LC_ALL="en_US.UTF-8"
+
+%runscript
+    echo "OpenPorousMedia Singularity Container"
+
+%post
+    apt-get update
+    apt-get install software-properties-common -y
+
+    apt-add-repository ppa:opm/ppa -y
+    apt-get update
+
+    apt-get install libopm-simulators-bin git mpi-default-bin -y
+
+    mkdir /opm
+    cd /opm
+
+    git clone https://github.com/OPM/opm-data.git

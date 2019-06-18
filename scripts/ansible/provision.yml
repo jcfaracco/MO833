@@ -1,0 +1,80 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  tags: default
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+    ssh_host_key_checking: "StrictHostKeyChecking"
+    singularity_version: "2.5.2"
+    singularity_dir: "/home/ubuntu/singularity/"
+    test_target: "opm"
+  tasks:
+    - name: "Copying default SSH settings"
+      copy:
+        src: templates/ssh_config
+        dest: /etc/ssh/ssh_config
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: "Restart service SSHD"
+      service:
+        name: sshd
+        state: restarted
+
+    - name: "Enable SSH all-2-all"
+      copy:
+        src: "/root/.ssh/{{ item.src }}"
+        dest: "/home/ubuntu/.ssh/{{ item.dest }}"
+      with_items:
+        - { src: id_rsa.pub, dest: id_rsa.pub }
+        - { src: id_rsa, dest: id_rsa }
+        - { src: authorized_keys, dest: authorized_keys.new }
+
+    - name: "Add new public key to Authorized Keys"
+      shell: |
+        cat /home/ubuntu/.ssh/authorized_keys.new >> /home/ubuntu/.ssh/authorized_keys
+        rm /home/ubuntu/.ssh/authorized_keys.new
+        exit 0
+
+#    - name: "Install Dependencies"
+#      apt:
+#        pkg:
+#        - libtool-bin
+#        - automake
+#        - build-essential
+#        - libarchive-dev
+#        - python
+#        - debootstrap
+#        - mpi-default-bin
+#        state: latest
+#        update_cache: yes
+#
+#    - name: "Clone Singularity"
+#      git:
+#        repo: "https://github.com/singularityware/singularity.git"
+#        dest: "{{ singularity_dir }}"
+#        version: "{{ singularity_version }}"
+#
+#    - name: "Execute autogen.sh"
+#      command: "{{ singularity_dir }}/autogen.sh"
+#      args:
+#        chdir: "{{ singularity_dir }}"
+#
+#    - name: "Execute configure"
+#      command: "{{ singularity_dir }}/configure --prefix=/usr/local"
+#      args:
+#        chdir: "{{ singularity_dir }}"
+#
+#    - name: "Execute make"
+#      command: make
+#      args:
+#        chdir: "{{ singularity_dir }}"
+#
+#    - name: "Execute make install"
+#      command: make install
+#      args:
+#        chdir: "{{ singularity_dir }}"
+#
+    - name: "Generate Docker image"
+      include: "tasks/{{ test_target }}/provision.yml"

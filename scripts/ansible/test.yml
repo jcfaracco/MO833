@@ -1,0 +1,32 @@
+---
+- hosts: "{{ groups.all | random }}"
+  gather_facts: false
+  vars:
+    ec2_type: "t2.micro"
+    n_processes: "1"
+  tasks:
+    - name: "Run test cases of {{ ec2_type }} using {{ n_processes }}"
+      shell: |
+        if [ ! -f hostfile ]; then
+          echo "No hostfile"
+          echo "{{ item }}" >> hostfile
+        else
+          echo "Yes, hostfile!"
+          cat hostfile
+          echo "{{ item }}" >> hostfile
+        fi
+        exit 0
+      with_items: "{{ hostvars[inventory_hostname]['private_hosts'] }}"
+      register: testcase
+
+    - name: "Clean up Hostfile"
+      file:
+        path: /home/ubuntu/hostfile
+        state: absent
+
+    - name: "Save results"
+      debug: msg="{{ item.stdout }}"
+      with_items: "{{ testcase.results }}"
+      delegate_to: localhost
+
+
