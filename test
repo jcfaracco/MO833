@@ -1,0 +1,67 @@
+#!/bin/bash -x
+
+key=
+testplan=
+
+usage()
+{
+    echo -e "usage: setup [[ -k keyfile -f testfile ] | [ -h ]]\n"
+}
+
+if [ $# -lt 1 ]; then
+    usage
+    exit 1
+fi
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -k | --key )            shift
+                                key=$1
+                                ;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        -f | --file )           shift
+                                testplan=$1
+                                ;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+
+if [ -z "$testplan" ]; then
+    echo -e "Test plan file is required.\n"
+    exit 1
+fi
+
+if [ -z "$key" ]; then
+    echo -e "No private key file: use -k option.\n"
+    exit 1
+fi
+
+OLD_IFS=$IFS
+
+IFS=', ' read -r -a array <<< "cat $testplan"
+
+TYPES=($(cut -d',' -f1 $testplan))
+CPUS=($(cut -d',' -f2 $testplan))
+PRICES=($(cut -d',' -f3 $testplan))
+
+tmp_dir=$(mktemp -d -t test-XXXXXXXX)
+
+cp -r scripts/ansible/ $tmp_dir/
+cp $key $tmp_dir/ansible/
+
+for index in "${!TYPES[@]}"; do
+#    echo "$index ${TYPES[$index]} ${CPUS[$index]} ${PRICES[$index]}"
+#    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=${TYPES[$index]}"
+
+    for i in $(seq 1 ${CPUS[$index]}); do
+        docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook test.yml --extra-vars "ec2_type=${TYPES[$index]} n_processes=$i"
+    done
+
+#    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
+done
+
+rm -rf $tmp_dir

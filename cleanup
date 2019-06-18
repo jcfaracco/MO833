@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tmp_dir=$(mktemp -d -t test-XXXXXXXX)
+
+cp -r scripts/ansible/ $tmp_dir/
+
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/cleanup.yml
+
+rm -rf $tmp_dir

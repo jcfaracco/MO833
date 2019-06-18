@@ -1,0 +1,62 @@
+#!/bin/bash
+
+filename=
+key=
+
+usage()
+{
+    echo -e "usage: setup [[ -k keyfile -t testcase ] | [ -h ]]\n"
+}
+
+if [ $# -lt 1 ]; then 
+    usage
+    exit 1
+fi
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -k | --key )            shift
+                                key=$1
+                                ;;
+        -h | --help )           usage
+                                exit
+                                ;;
+	-t | --test )		shift
+				testcase=$1
+				;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+
+if [ -z "$testcase" ]; then
+    echo -e "Default Test case will be used: OPM\n"
+    testcase=opm
+fi
+
+if [ -z "$key" ]; then
+    echo -e "No private key file: use -k option.\n"
+    exit 1
+fi
+
+if [[ $key != *".pem"* ]]; then
+    echo -e "Key file is not type of PEM (*.pem).\n"
+    exit 1
+fi
+
+docker build scripts/docker/ -t opm:default
+
+tmp_dir=$(mktemp -d -t test-XXXXXXXX)
+
+cp -r scripts/ansible/ $tmp_dir/
+cp $key $tmp_dir/ansible/
+
+KEY=$(basename -- $key)
+GROUP=$(echo ${KEY%.pem})
+
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP"
+
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook provision.yml --key-file "$(basename -- $key)" --extra-vars "test_target=$testcase"
+
+rm -rf $tmp_dir
