@@ -1,0 +1,29 @@
+---
+- hosts: "localhost"
+  connection: "localhost"
+  vars:
+    ec2_count_instances: 7
+    ec2_group_id: "julio-gpu"
+    ec2_default_type: "c5.large"
+  tasks:
+  - name: "Provision an EC2 instance"
+    ec2:
+      key_name: "{{ ec2_group_id }}"
+      group_id: "sg-0d9f29585517be393"
+      instance_type: "{{ ec2_default_type }}"
+      ec2_region: "us-east-1"
+      image: "ami-07b4156579ea1d7ba"
+      placement_group: "julio_group"
+      wait: true
+      count: "{{ ec2_count_instances }}"
+      instance_tags:
+        tool: "ansible"
+    register: ec2
+
+  - name: "Wait for SSH to come up"
+    wait_for:
+      host: "{{ item.public_dns_name }}"
+      port: 22
+      delay: 10
+      timeout: 600
+    with_items: "{{ ec2.instances }}"
