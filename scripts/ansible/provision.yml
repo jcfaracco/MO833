@@ -37,19 +37,19 @@
         rm /home/ubuntu/.ssh/authorized_keys.new
         exit 0
 
-#    - name: "Install Dependencies"
-#      apt:
-#        pkg:
-#        - libtool-bin
-#        - automake
-#        - build-essential
-#        - libarchive-dev
-#        - python
-#        - debootstrap
-#        - mpi-default-bin
-#        state: latest
-#        update_cache: yes
-#
+    - name: "Install Dependencies"
+      apt:
+        pkg:
+        - libtool-bin
+        - automake
+        - build-essential
+        - libarchive-dev
+        - python
+        - debootstrap
+        - mpi-default-bin
+        state: latest
+        update_cache: yes
+
 #    - name: "Clone Singularity"
 #      git:
 #        repo: "https://github.com/singularityware/singularity.git"
@@ -75,6 +75,6 @@
 #      command: make install
 #      args:
 #        chdir: "{{ singularity_dir }}"
-#
+
     - name: "Generate Docker image"
       include: "tasks/{{ test_target }}/provision.yml"

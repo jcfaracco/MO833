@@ -1,0 +1,680 @@
+ubuntu
+--------------------------------------------------------------------------
+[[21603,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: ip-172-31-27-169
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+**********************************************************************
+*                                                                    *
+*                        This is flow 2019.04                        *
+*                                                                    *
+* Flow is a simulator for fully implicit three-phase black-oil flow, *
+*             including solvent and polymer capabilities.            *
+*          For more information, see https://opm-project.org         *
+*                                                                    *
+**********************************************************************
+
+Reading deck file '/home/ubuntu/opm/spe1/SPE1CASE1.DATA'
+
+===============Saturation Functions Diagnostics===============
+
+System:  Black-oil system.
+Relative permeability input format: Saturation Family I.
+Number of saturation regions: 1
+
+
+
+================ Starting main simulation loop ===============
+
+
+Report step  0/120 at day 0/3650, date = 01-Jan-2015
+
+Time step 0, stepsize 1 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.004 sec), linear its =   7 ( 0.001 sec)
+
+Time step 1, stepsize 3 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =   7 ( 0.001 sec)
+
+Time step 2, stepsize 9 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  16 ( 0.002 sec)
+
+Time step 3, stepsize 18 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  21 ( 0.002 sec)
+[34;1m
+Warning: Keyword 'BASIC' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'PRES' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'RS' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'SGAS' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'WELLS' is unhandled for output to file.[0m
+
+Report step  1/120 at day 31/3650, date = 01-Feb-2015
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  22 ( 0.002 sec)
+[34;1m
+Warning: Keyword 'BASIC' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'PRES' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'RS' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'SGAS' is unhandled for output to file.[0m
+[34;1m
+Warning: Keyword 'WELLS' is unhandled for output to file.[0m
+
+Report step  2/120 at day 59/3650, date = 01-Mar-2015
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  25 ( 0.002 sec)
+[34;1m
+Warning: Message limit reached for message tag: Unhandled output keyword[0m
+
+Report step  3/120 at day 90/3650, date = 01-Apr-2015
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  29 ( 0.003 sec)
+
+Report step  4/120 at day 120/3650, date = 01-May-2015
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  23 ( 0.002 sec)
+
+Report step  5/120 at day 151/3650, date = 01-Jun-2015
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  28 ( 0.002 sec)
+
+Report step  6/120 at day 181/3650, date = 01-Jul-2015
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step  7/120 at day 212/3650, date = 01-Aug-2015
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  26 ( 0.002 sec)
+
+Report step  8/120 at day 243/3650, date = 01-Sep-2015
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  27 ( 0.002 sec)
+
+Report step  9/120 at day 273/3650, date = 01-Oct-2015
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  26 ( 0.002 sec)
+
+Report step 10/120 at day 304/3650, date = 01-Nov-2015
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  29 ( 0.002 sec)
+
+Report step 11/120 at day 334/3650, date = 01-Dec-2015
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  28 ( 0.002 sec)
+
+Report step 12/120 at day 365/3650, date = 01-Jan-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.002 sec)
+
+Report step 13/120 at day 396/3650, date = 01-Feb-2016
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 14/120 at day 424/3650, date = 29-Feb-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  27 ( 0.002 sec)
+
+Report step 15/120 at day 455/3650, date = 31-Mar-2016
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  24 ( 0.002 sec)
+
+Report step 16/120 at day 485/3650, date = 30-Apr-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  27 ( 0.002 sec)
+
+Report step 17/120 at day 516/3650, date = 31-May-2016
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  17 ( 0.002 sec)
+
+Report step 18/120 at day 546/3650, date = 30-Jun-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.002 sec)
+
+Report step 19/120 at day 577/3650, date = 31-Jul-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 20/120 at day 608/3650, date = 31-Aug-2016
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  24 ( 0.002 sec)
+
+Report step 21/120 at day 638/3650, date = 30-Sep-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  25 ( 0.002 sec)
+
+Report step 22/120 at day 669/3650, date = 31-Oct-2016
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  29 ( 0.002 sec)
+
+Report step 23/120 at day 699/3650, date = 30-Nov-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  26 ( 0.002 sec)
+
+Report step 24/120 at day 730/3650, date = 31-Dec-2016
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  29 ( 0.002 sec)
+
+Report step 25/120 at day 761/3650, date = 31-Jan-2017
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  24 ( 0.002 sec)
+
+Report step 26/120 at day 789/3650, date = 28-Feb-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 27/120 at day 820/3650, date = 31-Mar-2017
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 28/120 at day 850/3650, date = 30-Apr-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 29/120 at day 881/3650, date = 31-May-2017
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  24 ( 0.002 sec)
+
+Report step 30/120 at day 911/3650, date = 30-Jun-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  23 ( 0.002 sec)
+
+Report step 31/120 at day 942/3650, date = 31-Jul-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  27 ( 0.002 sec)
+
+Report step 32/120 at day 973/3650, date = 31-Aug-2017
+
+Time step 0, stepsize 30 days.
+    Switching control mode for well PROD from SURFACE_RATE to BHP
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  29 ( 0.003 sec)
+
+Report step 33/120 at day 1003/3650, date = 30-Sep-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  27 ( 0.002 sec)
+
+Report step 34/120 at day 1034/3650, date = 31-Oct-2017
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 35/120 at day 1064/3650, date = 30-Nov-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  28 ( 0.002 sec)
+
+Report step 36/120 at day 1095/3650, date = 31-Dec-2017
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 37/120 at day 1126/3650, date = 31-Jan-2018
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 38/120 at day 1154/3650, date = 28-Feb-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 39/120 at day 1185/3650, date = 31-Mar-2018
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 40/120 at day 1215/3650, date = 30-Apr-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 41/120 at day 1246/3650, date = 31-May-2018
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 42/120 at day 1276/3650, date = 30-Jun-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 43/120 at day 1307/3650, date = 31-Jul-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 44/120 at day 1338/3650, date = 31-Aug-2018
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 45/120 at day 1368/3650, date = 30-Sep-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 46/120 at day 1399/3650, date = 31-Oct-2018
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 47/120 at day 1429/3650, date = 30-Nov-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 48/120 at day 1460/3650, date = 31-Dec-2018
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 49/120 at day 1491/3650, date = 31-Jan-2019
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 50/120 at day 1519/3650, date = 28-Feb-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 51/120 at day 1550/3650, date = 31-Mar-2019
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 52/120 at day 1580/3650, date = 30-Apr-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 53/120 at day 1611/3650, date = 31-May-2019
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 54/120 at day 1641/3650, date = 30-Jun-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 55/120 at day 1672/3650, date = 31-Jul-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 56/120 at day 1703/3650, date = 31-Aug-2019
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  16 ( 0.002 sec)
+
+Report step 57/120 at day 1733/3650, date = 30-Sep-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 58/120 at day 1764/3650, date = 31-Oct-2019
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 59/120 at day 1794/3650, date = 30-Nov-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  16 ( 0.002 sec)
+
+Report step 60/120 at day 1825/3650, date = 31-Dec-2019
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 61/120 at day 1856/3650, date = 31-Jan-2020
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  16 ( 0.002 sec)
+
+Report step 62/120 at day 1884/3650, date = 28-Feb-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 63/120 at day 1915/3650, date = 30-Mar-2020
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 64/120 at day 1945/3650, date = 29-Apr-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  14 ( 0.002 sec)
+
+Report step 65/120 at day 1976/3650, date = 30-May-2020
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 66/120 at day 2006/3650, date = 29-Jun-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  14 ( 0.002 sec)
+
+Report step 67/120 at day 2037/3650, date = 30-Jul-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  17 ( 0.002 sec)
+
+Report step 68/120 at day 2068/3650, date = 30-Aug-2020
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 69/120 at day 2098/3650, date = 29-Sep-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  30 ( 0.003 sec)
+
+Report step 70/120 at day 2129/3650, date = 30-Oct-2020
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 71/120 at day 2159/3650, date = 29-Nov-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 72/120 at day 2190/3650, date = 30-Dec-2020
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  34 ( 0.003 sec)
+
+Report step 73/120 at day 2221/3650, date = 30-Jan-2021
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 74/120 at day 2249/3650, date = 27-Feb-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  18 ( 0.002 sec)
+
+Report step 75/120 at day 2280/3650, date = 30-Mar-2021
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 76/120 at day 2310/3650, date = 29-Apr-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.003 sec)
+
+Report step 77/120 at day 2341/3650, date = 30-May-2021
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 78/120 at day 2371/3650, date = 29-Jun-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 79/120 at day 2402/3650, date = 30-Jul-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  30 ( 0.003 sec)
+
+Report step 80/120 at day 2433/3650, date = 30-Aug-2021
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  22 ( 0.002 sec)
+
+Report step 81/120 at day 2463/3650, date = 29-Sep-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  29 ( 0.003 sec)
+
+Report step 82/120 at day 2494/3650, date = 30-Oct-2021
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  21 ( 0.003 sec)
+
+Report step 83/120 at day 2524/3650, date = 29-Nov-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  23 ( 0.002 sec)
+
+Report step 84/120 at day 2555/3650, date = 30-Dec-2021
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  22 ( 0.003 sec)
+
+Report step 85/120 at day 2586/3650, date = 30-Jan-2022
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  21 ( 0.002 sec)
+
+Report step 86/120 at day 2614/3650, date = 27-Feb-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  23 ( 0.003 sec)
+
+Report step 87/120 at day 2645/3650, date = 30-Mar-2022
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  24 ( 0.003 sec)
+
+Report step 88/120 at day 2675/3650, date = 29-Apr-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  24 ( 0.003 sec)
+
+Report step 89/120 at day 2706/3650, date = 30-May-2022
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  29 ( 0.003 sec)
+
+Report step 90/120 at day 2736/3650, date = 29-Jun-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  30 ( 0.003 sec)
+
+Report step 91/120 at day 2767/3650, date = 30-Jul-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  23 ( 0.003 sec)
+
+Report step 92/120 at day 2798/3650, date = 30-Aug-2022
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  4, linearizations =  5 ( 0.003 sec), linear its =  30 ( 0.003 sec)
+
+Report step 93/120 at day 2828/3650, date = 29-Sep-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  26 ( 0.003 sec)
+
+Report step 94/120 at day 2859/3650, date = 30-Oct-2022
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  31 ( 0.003 sec)
+
+Report step 95/120 at day 2889/3650, date = 29-Nov-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  24 ( 0.003 sec)
+
+Report step 96/120 at day 2920/3650, date = 30-Dec-2022
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.003 sec)
+
+Report step 97/120 at day 2951/3650, date = 30-Jan-2023
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.003 sec)
+
+Report step 98/120 at day 2979/3650, date = 27-Feb-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  23 ( 0.003 sec)
+
+Report step 99/120 at day 3010/3650, date = 30-Mar-2023
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  20 ( 0.002 sec)
+
+Report step 100/120 at day 3040/3650, date = 29-Apr-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 101/120 at day 3071/3650, date = 30-May-2023
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  30 ( 0.003 sec)
+
+Report step 102/120 at day 3101/3650, date = 29-Jun-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.003 sec)
+
+Report step 103/120 at day 3132/3650, date = 30-Jul-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.003 sec)
+
+Report step 104/120 at day 3163/3650, date = 30-Aug-2023
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  19 ( 0.002 sec)
+
+Report step 105/120 at day 3193/3650, date = 29-Sep-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  22 ( 0.003 sec)
+
+Report step 106/120 at day 3224/3650, date = 30-Oct-2023
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  25 ( 0.003 sec)
+
+Report step 107/120 at day 3254/3650, date = 29-Nov-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  23 ( 0.003 sec)
+
+Report step 108/120 at day 3285/3650, date = 30-Dec-2023
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  22 ( 0.003 sec)
+
+Report step 109/120 at day 3316/3650, date = 30-Jan-2024
+
+Time step 0, stepsize 28 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  20 ( 0.003 sec)
+
+Report step 110/120 at day 3344/3650, date = 27-Feb-2024
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  16 ( 0.002 sec)
+
+Report step 111/120 at day 3375/3650, date = 29-Mar-2024
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  21 ( 0.003 sec)
+
+Report step 112/120 at day 3405/3650, date = 28-Apr-2024
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  15 ( 0.002 sec)
+
+Report step 113/120 at day 3436/3650, date = 29-May-2024
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  20 ( 0.003 sec)
+
+Report step 114/120 at day 3466/3650, date = 28-Jun-2024
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  23 ( 0.003 sec)
+
+Report step 115/120 at day 3497/3650, date = 29-Jul-2024
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  12 ( 0.002 sec)
+
+Report step 116/120 at day 3528/3650, date = 29-Aug-2024
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  16 ( 0.002 sec)
+
+Report step 117/120 at day 3558/3650, date = 28-Sep-2024
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  15 ( 0.002 sec)
+
+Report step 118/120 at day 3589/3650, date = 29-Oct-2024
+
+Time step 0, stepsize 30 days.
+Time step summary: newton its =  2, linearizations =  3 ( 0.002 sec), linear its =  16 ( 0.002 sec)
+
+Report step 119/120 at day 3619/3650, date = 28-Nov-2024
+
+Time step 0, stepsize 31 days.
+Time step summary: newton its =  3, linearizations =  4 ( 0.002 sec), linear its =  21 ( 0.003 sec)
+
+
+================    End of simulation     ===============
+
+Total time (seconds):         0.630332
+Solver time (seconds):        0.600597
+ Assembly time (seconds):     0.250757 (Failed: 0; 0%)
+ Linear solve time (seconds): 0.284911 (Failed: 0; 0%)
+ Linear solve setup time (seconds): 0.0146197 (Failed: 0; 0%)
+ Update time (seconds):       0.0277394 (Failed: 0; 0%)
+ Output write time (seconds): 0.0253658
+Overall Well Iterations:      0 (Failed: 0; -nan%)
+Overall Linearizations:       448 (Failed: 0; 0%)
+Overall Newton Iterations:    325 (Failed: 0; 0%)
+Overall Linear Iterations:    2703 (Failed: 0; 0%)

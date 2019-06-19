@@ -52,16 +52,22 @@ tmp_dir=$(mktemp -d -t test-XXXXXXXX)
 
 cp -r scripts/ansible/ $tmp_dir/
 cp $key $tmp_dir/ansible/
+mkdir $tmp_dir/ansible/output/
 
 for index in "${!TYPES[@]}"; do
 #    echo "$index ${TYPES[$index]} ${CPUS[$index]} ${PRICES[$index]}"
-#    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=${TYPES[$index]}"
+    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=${TYPES[$index]}"
 
-    for i in $(seq 1 ${CPUS[$index]}); do
-        docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook test.yml --extra-vars "ec2_type=${TYPES[$index]} n_processes=$i"
-    done
+    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
 
-#    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
+    mkdir $tmp_dir/ansible/output/${TYPES[$index]}/
+#    for j in $(seq 1 30); do
+        for i in $(seq 1 1); do
+            docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook test.yml --extra-vars "ec2_type=${TYPES[$index]} n_processes=$i output_dir='/ansible/output/${TYPES[$index]}'"
+	done
+#    done
 done
+
+cp -r $tmp_dir/ansible/output .
 
 rm -rf $tmp_dir

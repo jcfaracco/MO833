@@ -15,7 +15,7 @@ From: ubuntu:16.04
     apt-add-repository ppa:opm/ppa -y
     apt-get update
 
-    apt-get install libopm-simulators-bin git mpi-default-bin -y
+    apt-get install libopm-simulators-bin mpi-default-bin git -y
 
     mkdir /opm
     cd /opm
