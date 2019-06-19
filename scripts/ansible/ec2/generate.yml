@@ -13,7 +13,7 @@
       instance_type: "{{ ec2_default_type }}"
       ec2_region: "us-east-1"
       image: "ami-07b4156579ea1d7ba"
-      placement_group: "julio_group"
+      placement_group: "rodrigo_b_new"
       wait: true
       count: "{{ ec2_count_instances }}"
       instance_tags:
