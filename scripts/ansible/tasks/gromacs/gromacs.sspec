@@ -1,0 +1,24 @@
+
+BootStrap: docker
+From: nvidia/cuda:10.1-devel-ubuntu18.04
+
+%runscript
+echo "GROMACS Singularity Container"
+
+%post
+    apt-get update && apt-get install cmake g++ mpich build-essential wget unzip -y
+    wget http://ftp.gromacs.org/pub/gromacs/gromacs-2018.7.tar.gz
+    tar xfz gromacs-2018.7.tar.gz
+    cd gromacs-2018.7
+    mkdir build
+    cd build
+    cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on -DGMX_GPU=on -DGMX_BUILD_MDRUN_ONLY=on
+    make
+    make install
+    cd
+    mkdir benchmarks
+    cd benchmarks
+    wget https://www.mpibpc.mpg.de/15101317/benchMEM.zip
+    wget https://www.mpibpc.mpg.de/15101328/benchRIB.zip
+    unzip benchMEM.zip
+    unzip benchRIB.zip
