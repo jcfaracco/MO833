@@ -35,6 +35,12 @@ if [ -z "$testcase" ]; then
     testcase=opm
 fi
 
+GTYPE=
+if [[ "$testcase" == "gromacs" ]]; then
+    GTYPE=" ec2_default_type=p2.xlarge"
+    echo $GTYPE
+fi
+
 if [ -z "$key" ]; then
     echo -e "No private key file: use -k option.\n"
     exit 1
@@ -55,7 +61,7 @@ cp $key $tmp_dir/ansible/
 KEY=$(basename -- $key)
 GROUP=$(echo ${KEY%.pem})
 
-docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP"
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP${GTYPE}"
 
 docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook provision.yml --key-file "$(basename -- $key)" --extra-vars "test_target=$testcase"
 

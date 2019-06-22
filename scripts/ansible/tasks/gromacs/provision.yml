@@ -1,26 +1,32 @@
 ---
-- name: "Removing Pre-Installed Docker"
-  apt:
-    name: nvidia-docker
-    state: absent
+- name: "Copy Google Download Script"
+  copy:
+    src: gdown.pl
+    dest: /home/ubuntu/
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
 
-- name: "Add NVidia Keys"
-  apt_key:
-    url: https://nvidia.github.io/nvidia-docker/gpgkey
+- name: "Download GROMACS container"
+  command: /home/ubuntu/gdown.pl https://drive.google.com/file/d/1SXcJ3RlUzrwB2Wq4Umo-XSrBjewgCdKn/view gromacs
+  args:
+    chdir: /home/ubuntu/
 
-- name: "Enable NVidia Repository"
-  apt_repository:
-    repo: "{{ item }}"
-    state: present
-    filename: 'nvidia-docker2'
-    update_cache: yes
+- name: "Download Benchmarks"
+  get_url:
+    url: "{{ item }}"
+    dest: /home/ubuntu/
   with_items:
-    - "deb https://nvidia.github.io/libnvidia-container/ubuntu16.04/amd64 /"
-    - "deb https://nvidia.github.io/nvidia-container-runtime/ubuntu16.04/amd64 /"
-    - "deb https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64 /"
+  - https://www.mpibpc.mpg.de/15101317/benchMEM.zip
+  - https://www.mpibpc.mpg.de/15101328/benchRIB.zip
+  become: yes
+  become_user: ubuntu
+  become_method: sudo
 
-- name: "Install Pre-Requisites"
-  apt:
-    name: nvidia-docker2
-    update_cache: yes
-    state: latest
+- name: "Extract Benchmarks"
+  unarchive:
+    src: "/home/ubuntu/{{ item }}"
+    dest: /home/ubuntu/
+  with_items:
+  - benchMEM.zip
+  - benchRIB.zip

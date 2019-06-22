@@ -12,14 +12,18 @@
         instance-state-name: 'stopped'
     register: ec2
 
-  - name: "Restart all instances"
-    command: "aws ec2 start-instances --region {{ ec2_region }} --instance-id {{ item.instance_id }}"
+  - name: "Start instances that were previously launched"
+    ec2:
+      ec2_region: "{{ ec2_region }}"
+      state: 'running'
+      instance_ids: "{{ item.instance_id }}"
+      wait: True
     with_items: "{{ ec2.instances }}"
-    
-#  - name: "Stop instances that were previously launched"
-#    ec2:
-#      ec2_region: "{{ ec2_region }}"
-#      state: 'running'
-#      instance_ids: "{{ item.instance_id }}"
-#      wait: True
-#    with_items: "{{ ec2.instances }}"
+
+  - name: "Wait for SSH to come up"
+    wait_for:
+      host: "{{ item.public_dns_name }}"
+      port: 22
+      delay: 10
+      timeout: 600
+    with_items: "{{ ec2.instances }}"

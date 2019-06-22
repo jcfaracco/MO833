@@ -50,31 +50,31 @@
         state: latest
         update_cache: yes
 
-#    - name: "Clone Singularity"
-#      git:
-#        repo: "https://github.com/singularityware/singularity.git"
-#        dest: "{{ singularity_dir }}"
-#        version: "{{ singularity_version }}"
-#
-#    - name: "Execute autogen.sh"
-#      command: "{{ singularity_dir }}/autogen.sh"
-#      args:
-#        chdir: "{{ singularity_dir }}"
-#
-#    - name: "Execute configure"
-#      command: "{{ singularity_dir }}/configure --prefix=/usr/local"
-#      args:
-#        chdir: "{{ singularity_dir }}"
-#
-#    - name: "Execute make"
-#      command: make
-#      args:
-#        chdir: "{{ singularity_dir }}"
-#
-#    - name: "Execute make install"
-#      command: make install
-#      args:
-#        chdir: "{{ singularity_dir }}"
+    - name: "Clone Singularity"
+      git:
+        repo: "https://github.com/singularityware/singularity.git"
+        dest: "{{ singularity_dir }}"
+        version: "{{ singularity_version }}"
+
+    - name: "Execute autogen.sh"
+      command: "{{ singularity_dir }}/autogen.sh"
+      args:
+        chdir: "{{ singularity_dir }}"
+
+    - name: "Execute configure"
+      command: "{{ singularity_dir }}/configure --prefix=/usr/local"
+      args:
+        chdir: "{{ singularity_dir }}"
+
+    - name: "Execute make"
+      command: make
+      args:
+        chdir: "{{ singularity_dir }}"
+
+    - name: "Execute make install"
+      command: make install
+      args:
+        chdir: "{{ singularity_dir }}"
 
     - name: "Generate Docker image"
       include: "tasks/{{ test_target }}/provision.yml"

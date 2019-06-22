@@ -1,25 +1,16 @@
 ---
-#- name: "Create Singularity Image File"
-#  copy:
-#    src: singularity/opm.sspec
-#    dest: /home/ubuntu/singularity/
-#
-#- name: "Run Singularity Build"
-#  command: /usr/local/bin/singularity build opm /home/ubuntu/singularity/opm.sspec
-- name: "Install OPM from repository"
-  apt_repository:
-    repo: ppa:opm/ppa
+- name: "Create Singularity Image File"
+  copy:
+    src: singularity/opm.sspec
+    dest: /home/ubuntu/singularity/
 
-- name: "Install MPI and OPM"
-  apt:
-    pkg:
-    - mpi-default-bin
-    - libopm-simulators-bin
-    update_cache: yes
+- name: "Run Singularity Build"
+  command: /usr/local/bin/singularity build opm /home/ubuntu/singularity/opm.sspec
 
 - name: "Download benchmarks"
   git:
     repo: https://github.com/OPM/opm-data.git
-    dest: /home/ubuntu/opm/
-  sudo: yes
-  sudo_user: ubuntu
+    dest: /home/ubuntu/opm-data/
+  become: yes
+  become_user: ubuntu
+  become_method: sudo
