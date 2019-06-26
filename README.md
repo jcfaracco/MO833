@@ -26,8 +26,14 @@ Where are singularity scripts then? It is not part of the process building conta
 
 As mentioned above, this project only generate samples based on GROMACS or OPM. The process is divided into 4 items:
 
-Generate your target machines with `setup` script (requires: your PEM key, test case and Amazon credentials):
+1. Generate your target machines with `setup` script (requires: `-k` your PEM key, `-t` test case {opm,gromacs} and `-c` Amazon credentials):
 
     $ ./setup -k /foo/bar/my-scret.pem -c /biz/baz/credentials -t opm
 
 *Important:* Do not rename your PEM key. It is used to assign the correct key name into Amazon EC2.
+
+2. Run your test cases passing a target machine (requires `-t` test case {opm,gromacs}, `-m` machine target):
+
+    $ ./test -k /foo/bar/my-scret.pem -t gromacs -m p2.xlarge -p 8 -l 10
+
+Other arguments are optional: `-p` for OpenMP number of processes and `-l` for loops (or number of samples).
