@@ -24,6 +24,9 @@ while [ "$1" != "" ]; do
 	-t | --test )		shift
 				testcase=$1
 				;;
+        -n )                    shift
+                                max=$1
+                                ;;
         * )                     usage
                                 exit 1
     esac
@@ -33,6 +36,10 @@ done
 if [ -z "$testcase" ]; then
     echo -e "Default Test case will be used: OPM\n"
     testcase=opm
+fi
+
+if [ -z "$max" ]; then
+    max=8
 fi
 
 GTYPE=
@@ -61,7 +68,7 @@ cp $key $tmp_dir/ansible/
 KEY=$(basename -- $key)
 GROUP=$(echo ${KEY%.pem})
 
-#docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP${GTYPE}"
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP${GTYPE} ec2_count_instances=$max"
 
 docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook provision.yml --key-file "$(basename -- $key)" --extra-vars "test_target=$testcase"
 
