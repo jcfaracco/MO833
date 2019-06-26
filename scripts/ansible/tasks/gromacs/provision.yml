@@ -7,6 +7,13 @@
     group: ubuntu
     mode: 0755
 
+- name: "Install Dependencies"
+  apt:
+    pkg:
+    - unzip
+    state: latest
+    update_cache: yes
+
 - name: "Download GROMACS container"
   command: /home/ubuntu/gdown.pl https://drive.google.com/file/d/1SXcJ3RlUzrwB2Wq4Umo-XSrBjewgCdKn/view gromacs
   args:
@@ -16,6 +23,7 @@
   get_url:
     url: "{{ item }}"
     dest: /home/ubuntu/
+    timeout: 800
   with_items:
   - https://www.mpibpc.mpg.de/15101317/benchMEM.zip
   - https://www.mpibpc.mpg.de/15101328/benchRIB.zip
@@ -27,6 +35,10 @@
   unarchive:
     src: "/home/ubuntu/{{ item }}"
     dest: /home/ubuntu/
+    remote_src: yes
   with_items:
   - benchMEM.zip
   - benchRIB.zip
+  become: yes
+  become_user: ubuntu
+  become_method: sudo

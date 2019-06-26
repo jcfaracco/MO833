@@ -61,7 +61,7 @@ cp $key $tmp_dir/ansible/
 KEY=$(basename -- $key)
 GROUP=$(echo ${KEY%.pem})
 
-docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP${GTYPE}"
+#docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/generate.yml --extra-vars "ec2_group_id=$GROUP${GTYPE}"
 
 docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook provision.yml --key-file "$(basename -- $key)" --extra-vars "test_target=$testcase"
 

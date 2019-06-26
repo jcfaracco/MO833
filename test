@@ -5,7 +5,7 @@ testplan=
 
 usage()
 {
-    echo -e "usage: setup [[ -k keyfile -f testfile ] | [ -h ]]\n"
+    echo -e "usage: setup [[ -k keyfile -t testcase -m machine_type -p processors -l loops ] | [ -h ]]\n"
 }
 
 if [ $# -lt 1 ]; then
@@ -21,8 +21,17 @@ while [ "$1" != "" ]; do
         -h | --help )           usage
                                 exit
                                 ;;
-        -f | --file )           shift
-                                testplan=$1
+        -t | --test )           shift
+                                testcase=$1
+				;;
+	-m | --machine )        shift
+                                mtype=$1
+                                ;;
+	-p | --processors )     shift
+	                        np=$1
+				;;
+	-l | --loop )           shift
+                                loop=$1
                                 ;;
         * )                     usage
                                 exit 1
@@ -30,8 +39,13 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ -z "$testplan" ]; then
-    echo -e "Test plan file is required.\n"
+if [ -z "$testcase" ]; then
+    echo -e "Test case is required.\n"
+    exit 1
+fi
+
+if [ -z "$mtype" ]; then
+    echo -e "Machine type is required.\n"
     exit 1
 fi
 
@@ -40,13 +54,13 @@ if [ -z "$key" ]; then
     exit 1
 fi
 
-OLD_IFS=$IFS
+if [ -z "$loop" ]; then
+    loop=30
+fi
 
-IFS=', ' read -r -a array <<< "cat $testplan"
-
-TYPES=($(cut -d',' -f1 $testplan))
-CPUS=($(cut -d',' -f2 $testplan))
-PRICES=($(cut -d',' -f3 $testplan))
+if [ -z "$np" ]; then
+    np=1
+fi
 
 tmp_dir=$(mktemp -d -t test-XXXXXXXX)
 
@@ -54,17 +68,17 @@ cp -r scripts/ansible/ $tmp_dir/
 cp $key $tmp_dir/ansible/
 mkdir $tmp_dir/ansible/output/
 
-for index in "${!TYPES[@]}"; do
-#    echo "$index ${TYPES[$index]} ${CPUS[$index]} ${PRICES[$index]}"
-    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=${TYPES[$index]}"
+#docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=$mtype"
 
-    docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
+#docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
 
-    mkdir $tmp_dir/ansible/output/${TYPES[$index]}/
-#    for j in $(seq 1 30); do
-        for i in $(seq 1 1); do
-            docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook test.yml --extra-vars "ec2_type=${TYPES[$index]} n_processes=$i output_dir='/ansible/output/${TYPES[$index]}'"
-	done
+#sleep 10
+
+mkdir $tmp_dir/ansible/output/$mtype/
+for j in $(seq 1 $loop); do
+    i=$np
+#    for i in $(seq 1 $np); do
+        docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook test.yml --extra-vars "ec2_type=$mtype n_processes=$i output_dir='/ansible/output/$mtype' test_target=$testcase"
 #    done
 done
 

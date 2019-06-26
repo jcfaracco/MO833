@@ -1,0 +1,45 @@
+---
+- name: "Run test cases of {{ ec2_type }} using {{ n_processes }}"
+  shell: |
+    whoami
+    if [ ! -f hostfile ]; then
+      echo "{{ item }} slots={{ n_processes }}" > hostfile
+      singularity exec opm flow "{{ test_case_path }}"
+      echo "End of test ----"
+    else
+      echo "{{ item }} slots={{ n_processes }}" >> hostfile
+      lines=$(cat hostfile | wc -l)
+      if [[ $lines -eq 1 || $lines -eq 2 || $lines -eq 4  || $lines -eq 8 || $lines -eq 16 ]]; then
+        mpirun --hostfile hostfile singularity exec opm flow "{{ test_case_path }}"
+        echo "End of test ----"
+      fi
+    fi
+    exit 0
+  with_items: "{{ hostvars[inventory_hostname]['private_hosts'] }}"
+  register: testcase
+  sudo: yes
+  sudo_user: ubuntu
+
+- name: "Clean up Hostfile"
+  file:
+    path: /home/ubuntu/hostfile
+    state: absent
+
+- name: "Create a file if it does not exists"
+  file:
+    path: "{{ output_dir }}/test_{{ ec2_type }}_{{ n_processes }}_{{ std_idx}}.out"
+    state: touch
+  with_items: "{{ testcase.results }}"
+  loop_control:
+    index_var: std_idx
+  delegate_to: localhost
+
+- name: "Write Results"
+  lineinfile:
+    line: "{{ item.stdout }}"
+    dest: "{{ output_dir }}/test_{{ ec2_type }}_{{ n_processes }}_{{ std_idx}}.out"
+    insertafter: EOF
+  with_items: "{{ testcase.results }}"
+  loop_control:
+    index_var: std_idx
+  delegate_to: localhost

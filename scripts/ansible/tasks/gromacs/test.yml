@@ -1,0 +1,29 @@
+---
+- name: "Run test cases of {{ ec2_type }} with {{ n_processes }}"
+  shell: |
+    singularity exec --nv gromacs mpirun --np "{{ n_processes }}" /usr/local/gromacs/bin/./mdrun_mpi -s "{{ test_case_path }}" -nsteps 100
+    echo "End of test ------"  >&2
+    exit 0
+#  with_items: "{{ hostvars[inventory_hostname]['private_hosts'] }}"
+  register: testcase
+  sudo: yes
+  sudo_user: ubuntu
+
+- name: "Clean up Hostfile"
+  file:
+    path: /home/ubuntu/hostfile
+    state: absent
+
+- name: "Create a file if it does not exists"
+  file:
+    path: "{{ output_dir }}/test_{{ ec2_type }}_{{ n_processes }}.out"
+    state: touch
+#  with_items: "{{ testcase }}"
+  delegate_to: localhost
+
+- name: "Write Results"
+  lineinfile:
+    line: "{{ testcase.stderr }}"
+    dest: "{{ output_dir }}/test_{{ ec2_type }}_{{ n_processes }}.out"
+    insertafter: EOF
+  delegate_to: localhost

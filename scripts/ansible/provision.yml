@@ -76,5 +76,5 @@
       args:
         chdir: "{{ singularity_dir }}"
 
-    - name: "Generate Docker image"
+    - name: "Generate Container image"
       include: "tasks/{{ test_target }}/provision.yml"
