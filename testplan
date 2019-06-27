@@ -1,9 +1,0 @@
-t2.large,2,0.87
-t2.xlarge,4,0.90
-t3.large,2,0.94
-t3.xlarge,4,0.99
-c5.large,2,0.90
-c5.xlarge,4,0.98
-c5.2xlarge,8,0.99
-r5.large,8,0.34
-r5.xlarge,16,0.192
