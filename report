@@ -41,9 +41,11 @@ for D in `find $output -type d`; do
         machine=$(basename $D)
 	for T in `find $output/$(basename $D)/ -type f`; do
             testfile=$(basename $T)
-	    echo -e "$machine"
-            docker run --workdir=/python/ -v $(pwd)/scripts/python/:/python/:Z -v $(pwd)/$output/:/output/:Z opm:default python3 generate_test_$testcase.py -f /output/$machine/$testfile
-	    echo -e ""
+	    echo -e "$machine" >> $output/results.csv
+            docker run --workdir=/python/ -v $(pwd)/scripts/python/:/python/:Z -v $(pwd)/$output/:/output/:Z opm:default python3 generate_test_$testcase.py -f /output/$machine/$testfile >> $output/results.csv
+	    echo -e "" >> $output/results.csv
 	done
     fi
 done
+
+echo -e "Results were generated at '$(realpath $output/results.csv)'"
