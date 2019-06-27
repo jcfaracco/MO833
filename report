@@ -1,0 +1,49 @@
+#!/bin/bash
+
+usage()
+{
+    echo -e "usage: report [[ -d output_dir ] | [ -h ]]\n"
+}
+
+if [ $# -lt 1 ]; then
+    usage
+    exit 1
+fi
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -d | --dir )            shift
+                                output=$1
+                                ;;
+        -t | --test )           shift
+                                testcase=$1
+				;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+
+if [ -z "$testcase" ]; then
+    echo -e "Default Test case will be used: OPM\n"
+    testcase=opm
+fi
+
+if [ -z "$output" ]; then
+    output="output/"
+fi
+
+for D in `find $output -type d`; do
+    if [[ $D != $output ]]; then
+        machine=$(basename $D)
+	for T in `find $output/$(basename $D)/ -type f`; do
+            testfile=$(basename $T)
+	    echo -e "$machine"
+            docker run --workdir=/python/ -v $(pwd)/scripts/python/:/python/:Z -v $(pwd)/$output/:/output/:Z opm:default python3 generate_test_$testcase.py -f /output/$machine/$testfile
+	    echo -e ""
+	done
+    fi
+done
