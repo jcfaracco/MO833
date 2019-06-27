@@ -5,7 +5,7 @@ key=
 
 usage()
 {
-    echo -e "usage: setup [[ -k keyfile -t testcase ] | [ -h ]]\n"
+    echo -e "usage: setup [[ -k keyfile -c credentials -t testcase -n n_machines ] | [ -h ]]\n"
 }
 
 if [ $# -lt 1 ]; then 
@@ -17,6 +17,9 @@ while [ "$1" != "" ]; do
     case $1 in
         -k | --key )            shift
                                 key=$1
+                                ;;
+        -c | --cred )           shift
+                                cred=$1
                                 ;;
         -h | --help )           usage
                                 exit
@@ -36,6 +39,19 @@ done
 if [ -z "$testcase" ]; then
     echo -e "Default Test case will be used: OPM\n"
     testcase=opm
+fi
+
+if [ -z "$cred" ]; then
+    echo -e "Credentials are required.\n"
+    exit 1
+fi
+
+if [ ! -f "$cred" ]; then
+    echo -e "Credentials file does not exists.\n"
+    exit 1
+else
+    mkdir scripts/docker/data/
+    cp "$cred" scripts/docker/data/credentials
 fi
 
 if [ -z "$max" ]; then
