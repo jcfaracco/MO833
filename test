@@ -30,6 +30,9 @@ while [ "$1" != "" ]; do
 	-p | --processors )     shift
 	                        np=$1
 				;;
+        -s | --size )           shift
+                                size=$1
+                                ;;
 	-l | --loop )           shift
                                 loop=$1
                                 ;;
@@ -41,6 +44,29 @@ done
 
 if [ -z "$testcase" ]; then
     echo -e "Test case is required.\n"
+    exit 1
+fi
+
+if [ -z "$size" ]; then
+    if [[ "$testcase" == "gromacs" ]]; then
+        size=/home/ubuntu/benchMEM.tpr
+    else
+        size=/home/ubuntu/opm/spe1/SPE1CASE1.DATA
+    fi
+elif [[ "$size" == "small" ]]; then
+    if [[ "$testcase" == "gromacs" ]]; then
+        size=/home/ubuntu/benchMEM.tpr
+    else
+        size=/home/ubuntu/opm/spe1/SPE1CASE1.DATA
+    fi
+elif [[ "$size" == "large" ]]; then
+    if [[ "$testcase" == "gromacs" ]]; then
+        size=/home/ubuntu/benchRIB.tpr
+    else
+        size=/home/ubuntu/opm/norne/NORNE_ATW2013.DATA
+    fi
+else
+    echo -e "Size option should be 'small' or 'large'\n"
     exit 1
 fi
 
@@ -68,18 +94,18 @@ cp -r scripts/ansible/ $tmp_dir/
 cp $key $tmp_dir/ansible/
 mkdir $tmp_dir/ansible/output/
 
-#docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=$mtype"
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/resize.yml --extra-vars "ec2_new_type=$mtype"
 
-#docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
+docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook ec2/restart.yml
 
-#sleep 10
+sleep 10
 
 mkdir $tmp_dir/ansible/output/$mtype/
 for j in $(seq 1 $loop); do
     i=$np
-#    for i in $(seq 1 $np); do
+    for i in $(seq 1 $np); do
         docker run --workdir "/ansible" -v $tmp_dir/ansible/:/ansible/:Z opm:default ansible-playbook test.yml --extra-vars "ec2_type=$mtype n_processes=$i output_dir='/ansible/output/$mtype' test_target=$testcase"
-#    done
+    done
 done
 
 cp -r $tmp_dir/ansible/output .
